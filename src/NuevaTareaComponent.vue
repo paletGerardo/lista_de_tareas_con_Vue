@@ -23,6 +23,7 @@
 
       props: [
         'tareas',
+        'actualizarContador'
       ],
 
       methods: {
@@ -31,13 +32,16 @@
             if(texto){
               this.tareas.push({
                 texto: texto,
-                terminda: false
+                terminada: false
               })
+
+              this.actualizarContador();
             }
 
             this.nuevaTarea='';
 
-          }
+          },
+
       }
     }
 </script>

@@ -1,8 +1,9 @@
 <template>
   <div id="app" class="container">
     <div class="jumbotron">
-      <titulo v-bind:titulo = "titulo"></titulo>
-      <nueva-tarea v-bind:tareas="tareas"></nueva-tarea>
+      <titulo v-bind:titulo = "titulo" :numTareas="numTareas"></titulo>
+      <nueva-tarea v-bind:tareas="tareas" :actualizarContador="actualizarContador"></nueva-tarea>
+      <lista-tareas v-bind:tareas="tareas" ></lista-tareas>
     </div>
   </div>
 </template>
@@ -11,19 +12,22 @@
   // importar componente TituloComponent
   import Titulo from './TituloComponent.vue'
   import NuevaTarea from './NuevaTareaComponent.vue'
+  import ListaTareas from './ListaTareaComponent.vue'
 
   export default {
     // los componentes que voy a utilizar
     components: {
       Titulo,
       NuevaTarea,
+      ListaTareas
     },
 
     //los datos que voy a usar
     data () {
       return {
-
         titulo: '- Lista de tareas -',
+
+        numTareas: 3,
 
         tareas: [
           {
@@ -41,6 +45,12 @@
             terminada: false,
           },
         ]
+      }
+    },
+
+    methods: {
+      actualizarContador(){
+        this.numTareas++;
       }
     }
   }
